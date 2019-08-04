@@ -3,7 +3,9 @@
 Requirements: 
 
 ansible 2.8.1
+
 master: vagrant vm Ubuntu 16 (ip 192.168.33.11) 
+
 replica: vagrant vm Ubuntu 16 (ip 192.168.33.12) 
 
 1. For setup master run
