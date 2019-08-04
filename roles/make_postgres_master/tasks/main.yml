@@ -1,0 +1,22 @@
+---
+
+- name: Install xenial-pgdg
+  apt_repository:
+    repo: "deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+    filename: 'pgdg'
+    state: present
+    update_cache: 'yes'
+
+- name: Install postgresql-9.6
+  apt:
+    name:
+      - postgresql-9.6
+      - python-psycopg2
+    state: present
+    update_cache: yes
+
+- name: Configure DB
+  include: configure_postgres_server.yml
+
+- name: Configure DB
+  include: configure_database.yml

@@ -1,0 +1,7 @@
+database_user: 'replication'
+database_port: 5432
+database_pass: 'replication'
+master_ip: '192.168.33.11'
+replica_ip: '192.168.33.12'
+setup_master: 'yes'
+setup_replica: 'no'

@@ -1,0 +1,34 @@
+- name: Configure postgres postgresql.conf
+  template:
+    src: postgresql96_replica.conf.j2 
+    dest: /etc/postgresql/9.6/main/postgresql.conf
+    owner: root
+    group: root
+    mode:  0644
+  notify:
+    - restart postgresql
+
+- name: Configure postgres recovery.conf
+  template:
+    src: postgresql96_recovery.conf.j2
+    dest: /var/lib/postgresql/9.6/main/recovery.conf 
+    owner: root
+    group: root
+    mode:  0644
+  notify:
+    - restart postgresql
+
+- name: Change ownership for Postgresql Data folder to postgres
+  file:
+    path:  /var/lib/postgresql/9.6/main
+    owner: postgres
+    group: postgres
+    mode:  0700
+    recurse: yes
+    state: directory
+
+- name: Check postgresql started
+  service:
+    name: postgresql
+    state: started
+

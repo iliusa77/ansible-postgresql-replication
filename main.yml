@@ -1,0 +1,17 @@
+---
+# ansible-playbook -i environments/postgresql-hosts main.yml --tags setup_master
+# ansible-playbook -i environments/postgresql-hosts main.yml --tags setup_replica
+
+- name: Setup PostgreSQL Master
+  hosts: db-master
+  become: yes
+  roles:
+    - make_postgres_master
+  tags: setup_master
+
+- name: Setup PostgreSQL Replica
+  hosts: db-replica
+  become: yes
+  roles:
+    - make_postgres_replica
+  tags: setup_replica

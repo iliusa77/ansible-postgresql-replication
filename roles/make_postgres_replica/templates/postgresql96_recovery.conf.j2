@@ -1,0 +1,4 @@
+standby_mode = on
+primary_conninfo = 'host={{ master_ip }} port={{ database_port }} user={{ database_user }} password={{ database_pass }}'
+trigger_file = '/var/lib/postgresql/9.6/trigger'
+restore_command = 'cp /var/lib/postgresql/9.6/main/arhive/%f %p'
